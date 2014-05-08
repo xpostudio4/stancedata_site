@@ -1,9 +1,5 @@
-#STDlib imports
-import os
-
-#Third party libraries
-import dj_database_url
 # Django settings for app project.
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -14,27 +10,21 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-if DEBUG == True:
-
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': '',                      # Or path to database file if using sqlite3.
-            # The following settings are not used with sqlite3:
-            'USER': '',
-            'PASSWORD': '',
-            'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-            'PORT': '',                      # Set to empty string for default.
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'stance_app',                      # Or path to database file if using sqlite3.
+        # The following settings are not used with sqlite3:
+        'USER': 'xpostudio4',
+        'PASSWORD': 'Jesusvictor1',
+        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'PORT': '',                      # Set to empty string for default.
     }
-else:
-    # Parse database configuration from $DATABASE_URL
-    # Honor the 'X-Forwarded-Proto' header for request.is_secure()
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    DATABASES['default'] =  dj_database_url.config()
+}
+
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [ 'stancedata.com']
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -61,7 +51,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = os.path.join(os.path.dirname(__file__),'..', 'media')
+MEDIA_ROOT =  os.path.join(os.path.dirname(__file__), '..', 'media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -72,7 +62,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = 'staticfiles'
+STATIC_ROOT = '/home/xpostudio4/webapps/static_stanceapp/'
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
@@ -82,8 +72,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.i
-    os.path.join(os.path.dirname(__file__),'..', 'static'),
+    # Don't forget to use absolute paths, not relative paths.
+     os.path.join(os.path.dirname(__file__), '..', 'static'),
+
 )
 
 # List of finder classes that know how to find static files in
@@ -95,7 +86,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = ')5zvl2m#i@%-w5^7vzlg24ywaw6-0f*)e#+@p*g3l#gy+3wn2='
+SECRET_KEY = 'y_0(ll$x@e8_y4-t1*sk8)jhc*4c*!w4=vkqu*5i-z6z9yc)er'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -123,7 +114,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(os.path.dirname(__file__),'..', 'templates'),
+     os.path.join(os.path.dirname(__file__), '..', 'templates'),
 )
 
 INSTALLED_APPS = (
@@ -134,10 +125,34 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'django.contrib.sitemaps',
+    'zinnia',
+    'tagging',
 )
+
+#zinnia spam filter options
+ZINNIA_SPAM_CHECKER_BACKENDS = ('zinnia.spam_checker.backends.automattic',)
+AKISMET_SECRET_API_KEY = 'fa36cc0f87b0'
+
+#zinnia template options
+ZINNIA_ENTRY_CONTENT_TEMPLATES = [
+  ('zinnia/_short_entry_detail.html', 'Short entry template'),
+]
+
+ZINNIA_ENTRY_DETAIL_TEMPLATES = [
+    ('detail/fullwidth_entry_detail.html', 'Fullwidth template'),
+]
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+  'django.contrib.auth.context_processors.auth',
+  'django.core.context_processors.i18n',
+  'django.core.context_processors.request',
+  'django.core.context_processors.media',
+  'django.core.context_processors.static',
+  'zinnia.context_processors.version',) # Optional
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 
