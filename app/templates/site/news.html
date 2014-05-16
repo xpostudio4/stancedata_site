@@ -3,3 +3,45 @@
 {% block link_careers %} class="main-nav-current" {% endblock link_careers %}
 {% block main_picture %} style="background-image: url('{{ STATIC_URL }}/img/news.jpg')"  {% endblock main_picture %}
 {% block main_text %} News {% endblock main_text %}
+
+{% block content %}
+<div class="content-wrapper">
+  <h1 id="newsPageHeadline" class="h-beta text-size-2">Events</h1><br/></br/>
+  <div class="featured-event">
+    <h2>Featured Event:</h2>
+    <div itemscope="" itemtype="http://schema.org/BusinessEvent">
+    <div style="color: #888;" class="event-title text-size-3" itemprop="name">Prodem Conference</div>
+    <div class="event-date">
+      <span class="month">May</span>
+      <span class="days">19-23</span>
+      <span itemprop="startDate" content="2014-05-19"></span>
+      <span itemprop="endDate" content="2014-05-23"></span>
+    </div>
+    <div class="event-location" itemprop="location" itemscope="" itemtype="http://schema.org/PostalAddress">
+      <span itemprop="addressLocality">Santo Domingo</span>
+      <span itemprop="addressRegion">DR</span>
+    </div>
+  <div class="event-description" itemprop="description">Prodem is a conference for all the agents in the Latin America entreprenurial world. </div>
+  <div class="event-button">
+    <a itemprop="sameAs" href="http://www.prodem.ungs.edu.ar/paginas/ver/1" target="_blank" class="btn">Event Site</a>
+  </div>
+  </div>
+</div>
+
+{# Upcoming Events #}
+<h2 id="upcomingEventsHeader"><span>Upcoming Events</span></h2>
+<div class="upcoming-events">
+  <div class="header">
+  <div class="event-date">Date</div>
+  <div class="event-title">Event</div>
+  <div class="event-location">Location</div>
+</div>
+<a href="" target="_blank" class="event" itemscope="http://python.do" itemtype="http://schema.org/BusinessEvent">
+  <div class="event-date"> May 27, 2014 <span itemprop="startDate" content="2014-05-27"></span>  <span itemprop="endDate" content="2014-05-27"></span>  </div> <div class="event-title" itemprop="name"> Python Dominicana Usergroup </div> <div class="event-location" itemprop="location" itemscope="" itemtype="http://schema.org/PostalAddress"> <span itemprop="addressLocality">Santo Domingo</span>  <span itemprop="addressRegion">RD</span>   </div> <meta itemprop="sameAs" content="http://python.do"> </a>
+ <a href="https://www.facebook.com/groups/161328360736390/" target="_blank" class="event" itemscope="" itemtype="http://schema.org/BusinessEvent"> <div class="event-date"> June 2, 2014 <span itemprop="startDate" content="2014-06-02"></span>  </div> <div class="event-title" itemprop="name"> Hackers and Founders MeetUp </div> <div class="event-location" itemprop="location" itemscope="" itemtype="http://schema.org/PostalAddress"> <span itemprop="addressLocality">Santo Domingo</span>  <span itemprop="addressRegion">RD</span>   </div> <meta itemprop="sameAs" content="https://www.facebook.com/groups/161328360736390/"> </a>
+<a href="http://python.do" target="_blank" class="event" itemscope="" itemtype="http://schema.org/BusinessEvent"> <div class="event-date"> June 10, 2014 <span itemprop="startDate" content="2014-06-10"></span>  </div> <div class="event-title" itemprop="name"> Python Dominicana User Group </div> <div class="event-location" itemprop="location" itemscope="" itemtype="http://schema.org/PostalAddress"> <span itemprop="addressLocality">Santo Domingo</span>  <span itemprop="addressRegion">RD</span>   </div> <meta itemprop="sameAs" content="http://python.do"> </a>
+<a href="http://coworking.do" target="_blank" class="event" itemscope="" itemtype="http://schema.org/BusinessEvent"> <div class="event-date"> June 16, 2014 <span itemprop="startDate" content="2014-06-16"></span>  <span itemprop="endDate" content="2014-06-16"></span>  </div> <div class="event-title" itemprop="name"> Customer Development Workshop </div> <div class="event-location" itemprop="location" itemscope="" itemtype="http://schema.org/PostalAddress"> <span itemprop="addressLocality">Santo Domingo</span>   <span itemprop="addressCountry">RD</span>  </div> <meta itemprop="sameAs" content="http://coworking.do"> </a>
+<a href="https://www.facebook.com/groups/JavaScriptDominicana/" target="_blank" class="event" itemscope="" itemtype="http://schema.org/BusinessEvent"> <div class="event-date"> Jun 21, 2014 <span itemprop="startDate" content="2014-06-21"></span>  </div> <div class="event-title" itemprop="name"> Javascript Dominicana MeetUp </div> <div class="event-location" itemprop="location" itemscope="" itemtype="http://schema.org/PostalAddress"> <span itemprop="addressLocality">Santo Domingo</span>  <span itemprop="addressRegion">RD</span>   </div> <meta itemprop="sameAs" content="https://www.facebook.com/groups/JavaScriptDominicana/"></a>
+
+<br/><br/><br/>
+{% endblock content %}
