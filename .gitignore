@@ -5,6 +5,9 @@ __pycache__/
 # C extensions
 *.so
 
+#Local Databases
+*.sqlite3
+
 #personalized file to upload
 fabfile.py
 
