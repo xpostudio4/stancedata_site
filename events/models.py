@@ -9,4 +9,9 @@ class Event(models.Model):
     description = models.TextField()
     city = models.CharField(max_length=60)
     country = models.CharField(max_length=100)
+    url = models.URLField(blank=True)
+
+    def __str__(self):
+        return self.title
+
 

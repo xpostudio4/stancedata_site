@@ -1,4 +1,5 @@
 #Django imports
+from events.functions import get_updated_event_list
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 
@@ -19,4 +20,6 @@ def community(request):
     return render(request, 'site/community.html')
 
 def news(request):
-    return render(request, 'site/news.html')
+    return render(request, 'site/news.html',{
+        'main_event':get_updated_event_list()[0],
+        'event_list': get_updated_event_list()[1:] })
