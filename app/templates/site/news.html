@@ -23,16 +23,21 @@
       <span itemprop="addressRegion">{{ main_event.country }}</span>
     </div>
     <div class="event-description" itemprop="description"> {{ main_event.description }}</div>
-  {% if main_event.url %}
-  <div class="event-button">
-    <a itemprop="sameAs" href="{{ main_event.url }}" target="_blank" class="btn">Event Site</a>
+      {% if main_event.url %}
+      <div class="event-button">
+        <a itemprop="sameAs" href="{{ main_event.url }}" target="_blank" class="btn">Event Site</a>
+      </div>
+      {% endif %}
   </div>
-  {% endif %}
-  </div>
+  {% else %}
+   <div class="featured-event">
+    <h2>No future events planned on the short term</h2>
+   </div>
   {% endif %}
 </div>
 
 {# Upcoming Events #}
+{% if event_list %}
 <h2 id="upcomingEventsHeader"><span>Upcoming Events</span></h2>
 <div class="upcoming-events">
   <div class="header">
@@ -40,7 +45,6 @@
   <div class="event-title">Event</div>
   <div class="event-location">Location</div>
 </div>
-{% if event_list %}
   {% for event in event_list %}
   <a href="{{ event.url }}" target="_blank" class="event" itemscope="" itemtype="http://schema.org/BusinessEvent">
   <div class="event-date"> {{ event.from_date }}<span itemprop="startDate" content="{{ event.from_date | date:"o-m-d"}}"></span>  <span itemprop="endDate" content="{{ event.to_date | date:"o-m-d"}}"></span>  </div> <div class="event-title" itemprop="name">{{ event.title }}</div> <div class="event-location" itemprop="location" itemscope="" itemtype="http://schema.org/PostalAddress"> <span itemprop="addressLocality">{{ event.city }}</span>  <span itemprop="addressRegion">{{ event.country }}</span>   </div> <meta itemprop="sameAs" content="{{ event.url}}"> </a>

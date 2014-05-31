@@ -86,7 +86,9 @@
 <br/>
 <script>
 
-$('#learn-more').click(function(){
+var learn = $('#learn-more');
+learn.onclick(function(e){
+  e.preventDefault();
  $('html, body').animate({
   scrollTop: $("#learn-more-grid").offset().top
 }, 2000);
