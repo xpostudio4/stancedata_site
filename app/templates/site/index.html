@@ -6,10 +6,10 @@
 
 {% block link_home %}class="main-nav-current"{% endblock link_home %}
 {% block main_button %}
-<a class="btn" href="careers" style="bottom: 150px;">Learn More</a>
+<button  class="btn" id="learn-more" style="bottom: 150px;">Learn More</button>
 {% endblock main_button %}
 {% block action_button %}
-<a class="btn" href="careers" style="bottom: 150px;">Contact Us</a>
+<button id="contact-form" class="btn" href="careers" style="bottom: 150px;">Contact Us</button>
 {% endblock action_button %}
 {% block content %}
 <div class="about-section text-size-5 about-intro">
@@ -25,7 +25,7 @@
   <br/>
   <br/>
 
-<div class="content-grid">
+<div id="learn-more-grid" class="content-grid">
   <div class="content-grid-item">
     <img src="{{ STATIC_URL }}img/graph10.jpg" width="75%"/></br>
     <span class="content-grid-number text-size-7">01</span>
@@ -84,7 +84,14 @@
 <br/>
 <br/>
 <br/>
+<script>
 
+$('#learn-more').click(function(){
+ $('html, body').animate({
+  scrollTop: $("#learn-more-grid").offset().top
+}, 2000);
+})
+</script>
 
 {% endblock content %}
 
