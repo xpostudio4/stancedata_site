@@ -6,10 +6,10 @@
 
 {% block link_home %}class="main-nav-current"{% endblock link_home %}
 {% block main_button %}
-<button  class="btn feature-action" id="learn-more" style="bottom: 150px; -webkit-box-shadow: 0 3px 0 0 #00365D; -moz-box-shadow: 0 3px 0 0 #00365D; box-shadow: 0 3px 0 0 #00365D;">Learn More</button>
+<button  class="btn feature-action" id="learn-more" style="position: relative; bottom: 150px; -webkit-box-shadow: 0 3px 0 0 #00365D; -moz-box-shadow: 0 3px 0 0 #00365D; box-shadow: 0 3px 0 0 #00365D; z-index: 2">Learn More</button>
 {% endblock main_button %}
 {% block action_button %}
-<button id="contact-form" class="btn" href="" style="bottom: 150px;">Contact Us</button>
+<button id="contact-form" class="btn" href="" style="bottom: 150px; position: relative; z-index:3;">Contact Us</button>
 {% endblock action_button %}
 {% block content %}
 <div class="about-section text-size-5 about-intro">
@@ -21,6 +21,12 @@
 
 </div>
 
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
   <h1 class="h-beta text-size-2">Services</h1>
   <br/>
   <br/>
@@ -84,14 +90,21 @@
 <br/>
 <br/>
 <br/>
+
+
+  <h1 id="contact-form-grid" class="h-beta text-size-2">Contact Us</h1>
 <script>
 
-var learn = $('#learn-more');
-learn.onclick(function(e){
-  e.preventDefault();
+$('#learn-more').click(function(){
  $('html, body').animate({
-  scrollTop: $("#learn-more-grid").offset().top
-}, 2000);
+  scrollTop: $("#learn-more-grid").position().top+600
+}, 800);
+})
+
+$('#contact-form').click(function(){
+ $('html, body').animate({
+  scrollTop: $("#contact-form-grid").position().top+500
+}, 800);
 })
 </script>
 
