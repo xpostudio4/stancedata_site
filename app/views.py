@@ -2,10 +2,12 @@
 from events.functions import get_updated_event_list
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
-
+from .forms import ContactForm
 
 def home(request):
-    return render(request, 'site/index.html')
+    form = ContactForm()
+    return render(request, 'site/index.html',
+            { "contact_form": form})
 
 def about(request):
     return render(request, 'site/about.html')
