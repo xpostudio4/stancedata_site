@@ -27,6 +27,11 @@ def news(request):
     except IndexError:
         main_event = []
 
+    try:
+        event_list = get_updated_event_list()[1:]
+    except IndexError:
+        event_list = []
+
     return render(request, 'site/news.html',{
         'main_event':main_event,
-        'event_list': get_updated_event_list()[1:] })
+        'event_list': event_list  })
