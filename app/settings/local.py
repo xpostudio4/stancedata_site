@@ -9,7 +9,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+     ('Leonardo Jimenez', 'ljimenez@stancedata.com'),
 )
 
 MANAGERS = ADMINS
@@ -137,6 +137,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'zinnia',
+    'tagging',
     'events',
 )
 
