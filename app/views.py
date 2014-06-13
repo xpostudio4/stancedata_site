@@ -3,6 +3,7 @@ from events.functions import get_updated_event_list
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from .forms import ContactForm
+from django.views.decorators.http import require_POST
 
 def home(request):
     form = ContactForm()
@@ -35,3 +36,9 @@ def news(request):
     return render(request, 'site/news.html',{
         'main_event':main_event,
         'event_list': event_list  })
+
+@require_POST
+def contact(request):
+    """This function should process the contact form in the main page and
+    return the notification if proccesed correctly"""
+    return HttpResponse("Form send")
