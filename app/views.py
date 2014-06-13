@@ -41,4 +41,8 @@ def news(request):
 def contact(request):
     """This function should process the contact form in the main page and
     return the notification if proccesed correctly"""
-    return HttpResponse("Form send")
+    form = ContactForm(request.POST)
+    if form.is_valid():
+        return HttpResponse("Form send")
+    else:
+        return HttpResponse("Form was not validated")
