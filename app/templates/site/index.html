@@ -91,7 +91,7 @@
   <h1 id="contact-form-grid" class="h-beta text-size-2">Contact Us</h1>
   <div style="margin: 25%; width: 50%; position: relative; top: -150px; ">
     <div>
-        <form action="/contact/" method="post" class="pure-form">{% csrf_token %}
+        <form id="form" action="/contact/" method="post" class="pure-form">{% csrf_token %}
             <fieldset class="pure-group">
               {% if contact_form %}
                   {% for field in contact_form %}
@@ -103,6 +103,21 @@
             <button type="submit" class="pure-button pure-input-1 pure-button-primary" style="">Send It!</button>
         </form>
     </div>
+    <script>
+         var form = $('#form');
+        
+        form.submit(function(e){
+          e.preventDefault();
+          $.ajax({
+            data: form.serialize(),
+            type: form.attr('method'),
+            url: form.attr('action'),
+            success: function(response){
+                form.remove();
+            },
+          });
+         });
+    </script>
 </div>
 <script>
 
