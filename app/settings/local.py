@@ -1,3 +1,4 @@
+from .base import * #base settings file
 #STDlib imports
 import os
 

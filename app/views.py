@@ -4,6 +4,10 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from .forms import ContactForm
 from django.views.decorators.http import require_POST
+from django.core.mail import send_mail, mail_admins
+from django.conf import settings
+
+admin_emails = [ v for k,v in settings.ADMINS]
 
 def home(request):
     form = ContactForm()
@@ -43,6 +47,14 @@ def contact(request):
     return the notification if proccesed correctly"""
     form = ContactForm(request.POST)
     if form.is_valid():
+        data = form.cleaned_data
+        send_mail(
+                "Contact Info: " + str(data['name']),
+                str(data['message']),
+                str(data['email']),
+                admin_emails,
+                fail_silently=False
+                )
         return HttpResponse("Form send")
     else:
         return HttpResponse("Form was not validated")

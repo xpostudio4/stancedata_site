@@ -1,3 +1,4 @@
+from .base import *
 # Django settings for app project.
 import os
 
