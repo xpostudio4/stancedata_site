@@ -115,6 +115,9 @@
             success: function(response){
                 form.remove();
             },
+            error: function(){
+                alert('We had problems processing your request, please review the form and verify later');
+            },
           });
          });
     </script>

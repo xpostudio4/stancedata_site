@@ -6,6 +6,7 @@ from .forms import ContactForm
 from django.views.decorators.http import require_POST
 from django.core.mail import send_mail, mail_admins
 from django.conf import settings
+from django.utils import simplejson
 
 admin_emails = [ v for k,v in settings.ADMINS]
 
@@ -44,7 +45,8 @@ def news(request):
 @require_POST
 def contact(request):
     """This function should process the contact form in the main page and
-    return the notification if proccesed correctly"""
+    return the notification if proccesed correctly otherwise json with
+    the errors should be returned"""
     form = ContactForm(request.POST)
     if form.is_valid():
         data = form.cleaned_data
@@ -57,4 +59,5 @@ def contact(request):
                 )
         return HttpResponse("Form send")
     else:
-        return HttpResponse("Form was not validated")
+        errors = form.errors
+        return HttpResponse(simplejson.dumps(error))
